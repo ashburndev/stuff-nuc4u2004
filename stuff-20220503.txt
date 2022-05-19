@@ -1,0 +1,138 @@
+Tue 03 May 2022 07:57:22 AM EDT
+
+openssl pkcs12 -in davihol.p12 -out davihol.pem -nodes
+openssl pkcs12 -in davihol.p12 -clcerts -nokeys -out certificate.crt
+openssl pkcs12 -in davihol.p12 -nocerts -out davihol-encrypted.key
+
+openssl rsa -in davihol-encrypted.key -out davihol-decrypted.key
+
+
+
+
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ openssl pkcs12 -in davihol.p12 -out davihol.pem -nodes
+Enter Import Password:
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ openssl pkcs12 -in davihol.p12 -clcerts -nokeys -out certificate.crt
+Enter Import Password:
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ openssl pkcs12 -in davihol.p12 -nocerts -out davihol-encrypted.key
+Enter Import Password:
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ openssl rsa -in davihol-encrypted.key -out davihol-decrypted.key
+Enter pass phrase for davihol-encrypted.key:
+writing RSA key
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ ls -latr | tail
+drwxrwxr-x  3 ashburndave ashburndave  4096 Apr 19 08:31 RubymineProjects
+-rw-------  1 ashburndave ashburndave 14570 Apr 19 09:01 .bash_history
+-rw-rw-r--  1 ashburndave ashburndave  2829 May  3 07:55 davihol.p12
+drwxr-xr-x  3 ashburndave ashburndave  4096 May  3 07:55 Downloads
+-rw-------  1 ashburndave ashburndave  3738 May  3 08:03 davihol.pem
+-rw-------  1 ashburndave ashburndave  1910 May  3 08:05 certificate.crt
+-rw-------  1 ashburndave ashburndave  1978 May  3 08:11 davihol-encrypted.key
+-rw-------  1 ashburndave ashburndave  1679 May  3 08:14 davihol-decrypted.key
+drwxr-xr-x 37 ashburndave ashburndave  4096 May  3 08:14 .
+-rw-rw-r--  1 ashburndave ashburndave   977 May  3 08:15 stuff-20220503.txt
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ 
+
+
+
+sudo apt-get update
+sudo apt-get install network-manager-openconnect-gnome
+
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ sudo apt-get install network-manager-openconnect-gnome
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  libfwupdplugin1
+Use 'sudo apt autoremove' to remove it.
+The following additional packages will be installed:
+  libopenconnect5 libstoken1 libtomcrypt1 libtommath1 network-manager-openconnect openconnect vpnc-scripts
+Suggested packages:
+  dnsmasq resolvconf
+The following NEW packages will be installed:
+  libopenconnect5 libstoken1 libtomcrypt1 libtommath1 network-manager-openconnect network-manager-openconnect-gnome openconnect vpnc-scripts
+0 upgraded, 8 newly installed, 0 to remove and 35 not upgraded.
+Need to get 1,461 kB of archives.
+After this operation, 7,010 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://us.archive.ubuntu.com/ubuntu focal/main amd64 libtommath1 amd64 1.2.0-3 [53.0 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu focal/universe amd64 libtomcrypt1 amd64 1.18.2-3 [360 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu focal/universe amd64 libstoken1 amd64 0.92-1 [26.2 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu focal/universe amd64 libopenconnect5 amd64 8.05-1 [134 kB]
+Get:5 http://us.archive.ubuntu.com/ubuntu focal/universe amd64 vpnc-scripts all 0.1~git20190117-1 [13.8 kB]
+Get:6 http://us.archive.ubuntu.com/ubuntu focal/universe amd64 openconnect amd64 8.05-1 [464 kB]
+Get:7 http://us.archive.ubuntu.com/ubuntu focal/universe amd64 network-manager-openconnect amd64 1.2.6-1 [382 kB]
+Get:8 http://us.archive.ubuntu.com/ubuntu focal/universe amd64 network-manager-openconnect-gnome amd64 1.2.6-1 [28.9 kB]
+Fetched 1,461 kB in 0s (5,734 kB/s)                          
+Selecting previously unselected package libtommath1:amd64.
+(Reading database ... 227017 files and directories currently installed.)
+Preparing to unpack .../0-libtommath1_1.2.0-3_amd64.deb ...
+Unpacking libtommath1:amd64 (1.2.0-3) ...
+Selecting previously unselected package libtomcrypt1:amd64.
+Preparing to unpack .../1-libtomcrypt1_1.18.2-3_amd64.deb ...
+Unpacking libtomcrypt1:amd64 (1.18.2-3) ...
+Selecting previously unselected package libstoken1:amd64.
+Preparing to unpack .../2-libstoken1_0.92-1_amd64.deb ...
+Unpacking libstoken1:amd64 (0.92-1) ...
+Selecting previously unselected package libopenconnect5:amd64.
+Preparing to unpack .../3-libopenconnect5_8.05-1_amd64.deb ...
+Unpacking libopenconnect5:amd64 (8.05-1) ...
+Selecting previously unselected package vpnc-scripts.
+Preparing to unpack .../4-vpnc-scripts_0.1~git20190117-1_all.deb ...
+Unpacking vpnc-scripts (0.1~git20190117-1) ...
+Selecting previously unselected package openconnect.
+Preparing to unpack .../5-openconnect_8.05-1_amd64.deb ...
+Unpacking openconnect (8.05-1) ...
+Selecting previously unselected package network-manager-openconnect.
+Preparing to unpack .../6-network-manager-openconnect_1.2.6-1_amd64.deb ...
+Unpacking network-manager-openconnect (1.2.6-1) ...
+Selecting previously unselected package network-manager-openconnect-gnome.
+Preparing to unpack .../7-network-manager-openconnect-gnome_1.2.6-1_amd64.deb ...
+Unpacking network-manager-openconnect-gnome (1.2.6-1) ...
+Setting up libtommath1:amd64 (1.2.0-3) ...
+Setting up vpnc-scripts (0.1~git20190117-1) ...
+Setting up libtomcrypt1:amd64 (1.18.2-3) ...
+Setting up libstoken1:amd64 (0.92-1) ...
+Setting up libopenconnect5:amd64 (8.05-1) ...
+Setting up openconnect (8.05-1) ...
+Setting up network-manager-openconnect (1.2.6-1) ...
+Setting up network-manager-openconnect-gnome (1.2.6-1) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for dbus (1.12.16-2ubuntu2.1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.7) ...
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ 
+
+POST https://uservpn.udev2dev.com//uservpn.udev2dev.com
+Attempting to connect to server 54.163.65.103:443
+Socket connect canceled
+Failed to connect to 54.163.65.103:443: Interrupted system call
+Attempting to connect to server 23.22.216.200:443
+Socket connect canceled
+Failed to connect to 23.22.216.200:443: Interrupted system call
+Failed to connect to host uservpn.udev2dev.com
+Failed to open HTTPS connection to uservpn.udev2dev.com
+POST https://uservpn.udev2dev.com//uservpn.udev2dev.com
+Attempting to connect to server 23.22.216.200:443
+
+uservpn.udev2dev.com
+https://uservpn.udev2dev.com
+
+https://portal.udev2dev.com
+https://github.udev2dev.com
+https://jenkins.udev2dev.com
+https://jira.udev2dev.com
+https://confluence.udev2dev.com
+https://nexus.udev2dev.com
+https://nexus.sonarqube.com
+
+
+
+

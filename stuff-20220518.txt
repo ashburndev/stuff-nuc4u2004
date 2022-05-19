@@ -1,0 +1,232 @@
+Wed 18 May 2022 11:09:56 AM EDT
+
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ date
+Wed 18 May 2022 11:09:44 AM EDT
+ashburndave@dphnuc4:~$ date > stuff-20220518.txt
+ashburndave@dphnuc4:~$ code   stuff-20220518.txt
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            7.8G     0  7.8G   0% /dev
+tmpfs           1.6G  1.7M  1.6G   1% /run
+/dev/sda2       219G   34G  174G  17% /
+tmpfs           7.8G   46M  7.8G   1% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           7.8G     0  7.8G   0% /sys/fs/cgroup
+/dev/loop1      128K  128K     0 100% /snap/bare/5
+/dev/loop2       62M   62M     0 100% /snap/core20/1405
+/dev/loop3       55M   55M     0 100% /snap/snap-store/558
+/dev/loop5       44M   44M     0 100% /snap/snapd/15177
+/dev/loop4      249M  249M     0 100% /snap/gnome-3-38-2004/99
+/dev/loop6       66M   66M     0 100% /snap/gtk-common-themes/1519
+/dev/sda1       511M  5.3M  506M   2% /boot/efi
+tmpfs           1.6G  140K  1.6G   1% /run/user/1000
+/dev/loop8       45M   45M     0 100% /snap/snapd/15534
+/dev/loop7       62M   62M     0 100% /snap/core20/1434
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ uname -a
+Linux dphnuc4 5.13.0-37-generic #42~20.04.1-Ubuntu SMP Tue Mar 15 15:44:28 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ cat /etc/debian_version 
+bullseye/sid
+ashburndave@dphnuc4:~$ cat /etc/lsb-release 
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=20.04
+DISTRIB_CODENAME=focal
+DISTRIB_DESCRIPTION="Ubuntu 20.04.4 LTS"
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ cat /etc/os-release 
+NAME="Ubuntu"
+VERSION="20.04.4 LTS (Focal Fossa)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 20.04.4 LTS"
+VERSION_ID="20.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=focal
+UBUNTU_CODENAME=focal
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ neofetch --stdout
+ashburndave@dphnuc4 
+------------------- 
+OS: Ubuntu 20.04.4 LTS x86_64 
+Kernel: 5.13.0-37-generic 
+Uptime: 41 days, 7 hours, 57 mins 
+Packages: 1801 (dpkg), 7 (snap) 
+Shell: bash 5.0.17 
+Resolution: 3840x2160 
+DE: GNOME 
+WM: Mutter 
+WM Theme: Adwaita 
+Theme: Yaru [GTK2/3] 
+Icons: Yaru [GTK2/3] 
+Terminal: gnome-terminal 
+CPU: Intel i5-4250U (4) @ 2.600GHz 
+GPU: Intel Haswell-ULT 
+Memory: 12562MiB / 15897MiB 
+
+ashburndave@dphnuc4:~$ 
+
+  759  cd /opt/RubyMine-2022.1/bin
+  760  ls
+  761  ls -latr
+  762  ./rubymine.sh
+  763  cd
+  764  ls -latr
+  765  ls -latr text-files/
+  766  neofetch
+  767  apt update
+  768  sudo apt update
+  769  apt list --upgradable
+  770  apt upgrade
+  771  sudo apt upgrade
+  772  date
+  773  date > stuff-20220518.txt
+  774  code   stuff-20220518.txt
+  775  df -h
+  776  ls -latr /etc | grep -i ver
+  777  ls -latr /etc | grep -i rel
+  778  cat /etc/debian_version 
+  779  cat /etc/lsb-release 
+  780  cat /etc/os-release 
+  781  sudo apt install neofetch
+  782  neofetch
+  783  neofetch -h
+  784  neofetch --help
+  785  neofetch --stdout
+  786  history
+ashburndave@dphnuc4:~$ 
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ ls -latr ~/Downloads/
+total 7067884
+-rw-rw-r--  1 ashburndave ashburndave   87022994 Mar 12 10:40 1password-latest.deb
+-rw-rw-r--  1 ashburndave ashburndave   78545292 Mar 13 09:13 code_1.65.2-1646927742_amd64.deb
+-rw-rw-r--  1 ashburndave ashburndave  109564124 Mar 13 09:13 code-stable-x64-1646928009.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave  179817923 Mar 13 09:33 jdk-17_linux-aarch64_bin.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave         64 Mar 13 09:33 jdk-17_linux-aarch64_bin.tar.gz.sha256
+-rw-rw-r--  1 ashburndave ashburndave  181083410 Mar 13 09:35 jdk-17_linux-x64_bin.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave         64 Mar 13 09:35 jdk-17_linux-x64_bin.tar.gz.sha256
+-rw-rw-r--  1 ashburndave ashburndave  155456144 Mar 13 09:35 jdk-17_linux-x64_bin.deb
+-rw-rw-r--  1 ashburndave ashburndave         64 Mar 13 09:35 jdk-17_linux-x64_bin.deb.sha256
+-rw-rw-r--  1 ashburndave ashburndave  146815279 Mar 13 10:20 jdk-8u321-linux-x64.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave      11526 Mar 13 10:20 8u321checksum.html
+-rw-rw-r--  1 ashburndave ashburndave  168679847 Mar 13 10:27 jdk-11.0.14_linux-x64_bin.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave  145013844 Mar 13 10:28 jdk-11.0.14_linux-x64_bin.deb
+-rw-rw-r--  1 ashburndave ashburndave       7625 Mar 13 10:28 11-0-14-checksum.html
+-rw-rw-r--  1 ashburndave ashburndave   21918532 Mar 15 07:05 node-v16.14.0-linux-x64.tar.xz
+-rw-rw-r--  1 ashburndave ashburndave 1204277208 Mar 21 07:52 mysql-8.0.28-linux-glibc2.12-x86_64.tar.xz
+-rw-rw-r--  1 ashburndave ashburndave  315996160 Mar 21 07:55 mysql-server_8.0.28-1ubuntu20.04_amd64.deb-bundle.tar
+-rw-rw-r--  1 ashburndave ashburndave  515831840 Apr  7 03:24 elasticsearch-8.1.2-linux-x86_64.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave        170 Apr  7 03:24 elasticsearch-8.1.2-linux-x86_64.tar.gz.sha512
+-rw-rw-r--  1 ashburndave ashburndave        488 Apr  7 03:24 elasticsearch-8.1.2-linux-x86_64.tar.gz.asc
+-rw-rw-r--  1 ashburndave ashburndave  270172155 Apr  7 03:26 kibana-8.1.2-linux-x86_64.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave        163 Apr  7 03:26 kibana-8.1.2-linux-x86_64.tar.gz.sha512
+-rw-rw-r--  1 ashburndave ashburndave        488 Apr  7 03:27 kibana-8.1.2-linux-x86_64.tar.gz.asc
+-rw-rw-r--  1 ashburndave ashburndave   89959443 Apr 12 07:46 pragstudio-rails-code.zip
+-rw-rw-r--  1 ashburndave ashburndave  182196153 Apr 19 04:56 jdk-18_linux-x64_bin.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave         64 Apr 19 04:56 jdk-18_linux-x64_bin.tar.gz.sha256
+-rw-rw-r--  1 ashburndave ashburndave  156374894 Apr 19 04:56 jdk-18_linux-x64_bin.deb
+-rw-rw-r--  1 ashburndave ashburndave         64 Apr 19 04:57 jdk-18_linux-x64_bin.deb.sha256
+-rw-rw-r--  1 ashburndave ashburndave  576532494 Apr 19 05:00 RubyMine-2022.1.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave         89 Apr 19 05:00 RubyMine-2022.1.tar.gz.sha256
+-rw-rw-r--  1 ashburndave ashburndave 1012957591 Apr 19 05:04 ideaIU-2022.1.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave         87 Apr 19 05:05 ideaIU-2022.1.tar.gz.sha256
+-rw-rw-r--  1 ashburndave ashburndave  853884839 Apr 19 05:06 ideaIC-2022.1.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave         87 Apr 19 05:07 ideaIC-2022.1.tar.gz.sha256
+-rw-rw-r--  1 ashburndave ashburndave      40184 Apr 19 05:08 RubyMine_ReferenceCard.pdf
+-rw-rw-r--  1 ashburndave ashburndave       2829 May  3 07:55 davihol.p12
+-rw-rw-r--  1 ashburndave ashburndave     632568 May  3 07:55 Udev2devSetup.docx
+-rw-rw-r--  1 ashburndave ashburndave  529729465 May 13 04:24 elasticsearch-8.2.0-linux-x86_64.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave        170 May 13 04:24 elasticsearch-8.2.0-linux-x86_64.tar.gz.sha512
+-rw-rw-r--  1 ashburndave ashburndave        488 May 13 04:24 elasticsearch-8.2.0-linux-x86_64.tar.gz.asc
+-rw-rw-r--  1 ashburndave ashburndave  254826037 May 13 04:32 kibana-8.2.0-linux-x86_64.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave        163 May 13 04:32 kibana-8.2.0-linux-x86_64.tar.gz.sha512
+-rw-rw-r--  1 ashburndave ashburndave        488 May 13 04:32 kibana-8.2.0-linux-x86_64.tar.gz.asc
+drwxr-xr-x  3 ashburndave ashburndave       4096 May 13 04:32 .
+drwxrwxr-x  6 ashburndave ashburndave       4096 May 13 04:50 elastictemp
+drwxr-xr-x 38 ashburndave ashburndave       4096 May 18 11:09 ..
+ashburndave@dphnuc4:~$ 
+
+https://code.visualstudio.com/download
+
+Version: 1.67.1
+Commit: da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+Date: 2022-05-06T12:39:22.915Z
+Electron: 17.4.1
+Chromium: 98.0.4758.141
+Node.js: 16.13.0
+V8: 9.8.177.13-electron.0
+OS: Linux x64 5.13.0-37-generic
+
+https://ubuntu.com/download
+https://ubuntu.com/download/desktop
+https://ubuntu.com/download/alternative-downloads
+https://releases.ubuntu.com/20.04.4/?_ga=2.167190910.1382257456.1652887328-1540780805.1647179398
+https://releases.ubuntu.com/20.04.4/
+https://releases.ubuntu.com/22.04/
+
+ashburndave@dphnuc4:~/Downloads$ mv SHA256SUMS ubuntu-20.04.4-desktop-amd64.iso.SHA256SUMS
+ashburndave@dphnuc4:~/Downloads$ mv SHA256SUMS.gpg ubuntu-20.04.4-desktop-amd64.iso.SHA256SUMS.gpg
+ashburndave@dphnuc4:~/Downloads$ 
+ashburndave@dphnuc4:~/Downloads$ ls -latr | tail
+-rw-rw-r--  1 ashburndave ashburndave        488 May 13 04:32 kibana-8.2.0-linux-x86_64.tar.gz.asc
+drwxrwxr-x  6 ashburndave ashburndave       4096 May 13 04:50 elastictemp
+drwxr-xr-x 38 ashburndave ashburndave       4096 May 18 11:09 ..
+-rw-rw-r--  1 ashburndave ashburndave   82683356 May 18 11:31 code_1.67.1-1651841865_amd64.deb
+-rw-rw-r--  1 ashburndave ashburndave  116452302 May 18 11:32 code-1.67.1-1651841920.el7.x86_64.rpm
+-rw-rw-r--  1 ashburndave ashburndave  115657504 May 18 11:32 code-stable-x64-1651842173.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave 3379068928 May 18 11:40 ubuntu-20.04.4-desktop-amd64.iso
+-rw-rw-r--  1 ashburndave ashburndave        202 May 18 11:40 ubuntu-20.04.4-desktop-amd64.iso.SHA256SUMS
+-rw-rw-r--  1 ashburndave ashburndave        833 May 18 11:40 ubuntu-20.04.4-desktop-amd64.iso.SHA256SUMS.gpg
+drwxr-xr-x  3 ashburndave ashburndave       4096 May 18 11:48 .
+ashburndave@dphnuc4:~/Downloads$ 
+ashburndave@dphnuc4:~/Downloads$ cat ubuntu-20.04.4-desktop-amd64.iso.SHA256SUMS
+f92f7dca5bb6690e1af0052687ead49376281c7b64fbe4179cc44025965b7d1c *ubuntu-20.04.4-desktop-amd64.iso
+28ccdb56450e643bad03bb7bcf7507ce3d8d90e8bf09e38f6bd9ac298a98eaad *ubuntu-20.04.4-live-server-amd64.iso
+ashburndave@dphnuc4:~/Downloads$ 
+ashburndave@dphnuc4:~/Downloads$ shasum -a 256 --check ubuntu-20.04.4-desktop-amd64.iso.SHA256SUMS
+ubuntu-20.04.4-desktop-amd64.iso: OK
+shasum: ubuntu-20.04.4-live-server-amd64.iso: No such file or directory
+ubuntu-20.04.4-live-server-amd64.iso: FAILED open or read
+shasum: WARNING: 1 listed file could not be read
+ashburndave@dphnuc4:~/Downloads$ 
+
+ashburndave@dphnuc4:~/Downloads$ mv SHA256SUMS ubuntu-22.04-desktop-amd64.iso.SHA256SUMS
+ashburndave@dphnuc4:~/Downloads$ mv SHA256SUMS.gpg ubuntu-22.04-desktop-amd64.iso.SHA256SUMS.gpg
+ashburndave@dphnuc4:~/Downloads$ ls -latr | tail
+-rw-rw-r--  1 ashburndave ashburndave   82683356 May 18 11:31 code_1.67.1-1651841865_amd64.deb
+-rw-rw-r--  1 ashburndave ashburndave  116452302 May 18 11:32 code-1.67.1-1651841920.el7.x86_64.rpm
+-rw-rw-r--  1 ashburndave ashburndave  115657504 May 18 11:32 code-stable-x64-1651842173.tar.gz
+-rw-rw-r--  1 ashburndave ashburndave 3379068928 May 18 11:40 ubuntu-20.04.4-desktop-amd64.iso
+-rw-rw-r--  1 ashburndave ashburndave        202 May 18 11:40 ubuntu-20.04.4-desktop-amd64.iso.SHA256SUMS
+-rw-rw-r--  1 ashburndave ashburndave        833 May 18 11:40 ubuntu-20.04.4-desktop-amd64.iso.SHA256SUMS.gpg
+-rw-rw-r--  1 ashburndave ashburndave 3654957056 May 18 11:51 ubuntu-22.04-desktop-amd64.iso
+-rw-rw-r--  1 ashburndave ashburndave        198 May 18 11:52 ubuntu-22.04-desktop-amd64.iso.SHA256SUMS
+-rw-rw-r--  1 ashburndave ashburndave        833 May 18 11:52 ubuntu-22.04-desktop-amd64.iso.SHA256SUMS.gpg
+drwxr-xr-x  3 ashburndave ashburndave       4096 May 18 11:53 .
+ashburndave@dphnuc4:~/Downloads$ 
+ashburndave@dphnuc4:~/Downloads$ cat ubuntu-22.04-desktop-amd64.iso.SHA256SUMS
+b85286d9855f549ed9895763519f6a295a7698fb9c5c5345811b3eefadfb6f07 *ubuntu-22.04-desktop-amd64.iso
+84aeaf7823c8c61baa0ae862d0a06b03409394800000b3235854a6b38eb4856f *ubuntu-22.04-live-server-amd64.iso
+ashburndave@dphnuc4:~/Downloads$ 
+ashburndave@dphnuc4:~/Downloads$ shasum -a 256 --check ubuntu-22.04-desktop-amd64.iso.SHA256SUMS
+ubuntu-22.04-desktop-amd64.iso: OK
+shasum: ubuntu-22.04-live-server-amd64.iso: No such file or directory
+ubuntu-22.04-live-server-amd64.iso: FAILED open or read
+shasum: WARNING: 1 listed file could not be read
+ashburndave@dphnuc4:~/Downloads$ 
+
+echo "b85286d9855f549ed9895763519f6a295a7698fb9c5c5345811b3eefadfb6f07 *ubuntu-22.04-desktop-amd64.iso" | shasum -a 256 --check
+
+ashburndave@dphnuc4:~/Downloads$ echo "b85286d9855f549ed9895763519f6a295a7698fb9c5c5345811b3eefadfb6f07 *ubuntu-22.04-desktop-amd64.iso" | shasum -a 256 --check
+ubuntu-22.04-desktop-amd64.iso: OK
+ashburndave@dphnuc4:~/Downloads$ 
+
+

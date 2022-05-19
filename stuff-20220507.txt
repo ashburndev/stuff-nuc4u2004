@@ -1,0 +1,206 @@
+Sat 07 May 2022 09:53:54 AM EDT
+
+POST https://uservpn.udev2dev.com//uservpn.udev2dev.com
+Attempting to connect to server 54.163.65.103:443
+Connected to 54.163.65.103:443
+Using certificate file /home/ashburndave/certificate.crt
+Using private key file /home/ashburndave/davihol-decrypted.key
+Using client certificate 'davihol'
+SSL negotiation with uservpn.udev2dev.com
+Connected to HTTPS on uservpn.udev2dev.com
+Got HTTP response: HTTP/1.1 404 Not found
+Content-length: 50
+Connection: close
+HTTP body length:  (50)
+Unexpected 404 result from server
+GET https://uservpn.udev2dev.com//uservpn.udev2dev.com
+Attempting to connect to server 23.22.216.200:443
+Connected to 23.22.216.200:443
+SSL negotiation with uservpn.udev2dev.com
+Connected to HTTPS on uservpn.udev2dev.com
+Got HTTP response: HTTP/1.1 200 OK
+Set-Cookie: webvpncontext=; expires=Thu, 01 Jan 1970 22:00:00 GMT; path=/; Secure; HttpOnly
+Content-Type: text/xml
+Content-Length: 250
+X-Transcend-Version: 1
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: deny
+X-Content-Type-Options: nosniff
+Content-Security-Policy: default-src 'none'
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+Clear-Site-Data: "cache","cookies","storage"
+Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+X-XSS-Protection: 0
+HTTP body length:  (250)
+Please enter your username.
+GET https://uservpn.udev2dev.com//uservpn.udev2dev.com
+Attempting to connect to server 23.22.216.200:443
+Connected to 23.22.216.200:443
+SSL negotiation with uservpn.udev2dev.com
+Connected to HTTPS on uservpn.udev2dev.com
+Got HTTP response: HTTP/1.1 200 OK
+Set-Cookie: webvpncontext=; expires=Thu, 01 Jan 1970 22:00:00 GMT; path=/; Secure; HttpOnly
+Content-Type: text/xml
+Content-Length: 250
+X-Transcend-Version: 1
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: deny
+X-Content-Type-Options: nosniff
+Content-Security-Policy: default-src 'none'
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+Clear-Site-Data: "cache","cookies","storage"
+Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+X-XSS-Protection: 0
+HTTP body length:  (250)
+Please enter your username.
+
+
+https://askubuntu.com/questions/788803/how-to-change-the-metric-of-an-openvpn-client-default-route
+https://askubuntu.com/questions/1396226/default-route-through-vpn-tunnel
+https://askubuntu.com/questions/84516/how-to-set-routes-for-my-vpn-connection
+https://askubuntu.com/questions/1227757/vpn-to-office-without-routing-all-internet-traffic
+https://hdkb.clemson.edu/phpkb/article.php?id=642
+https://hdkb.clemson.edu/phpkb/article.php?id=642
+
+
+ashburndave@dphnuc4:~$ nslookup uservpn.udev2dev.com
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+Name:	uservpn.udev2dev.com
+Address: 54.163.65.103
+Name:	uservpn.udev2dev.com
+Address: 23.22.216.200
+
+ashburndave@dphnuc4:~$ 
+
+
+ashburndave@dphnuc4:~$ ip -r address
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet localhost/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ip6-localhost/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether c0:3f:d5:60:eb:89 brd ff:ff:ff:ff:ff:ff
+    altname enp0s25
+    inet dphnuc4.lan/24 brd 192.168.86.255 scope global dynamic noprefixroute eno1
+       valid_lft 84010sec preferred_lft 84010sec
+    inet6 dphnuc4/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: wlp2s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+    link/ether ac:7b:a1:47:dc:e0 brd ff:ff:ff:ff:ff:ff
+ashburndave@dphnuc4:~$ 
+
+ashburndave@dphnuc4:~$ ip r
+default via 192.168.86.1 dev eno1 proto dhcp metric 100 
+169.254.0.0/16 dev eno1 scope link metric 1000 
+192.168.86.0/24 dev eno1 proto kernel scope link src 192.168.86.88 metric 100 
+ashburndave@dphnuc4:~$ 
+
+ashburndave@dphnuc4:~$ ifconfig
+
+Command 'ifconfig' not found, but can be installed with:
+
+sudo apt install net-tools
+
+ashburndave@dphnuc4:~$ sudo apt install net-tools
+
+ashburndave@dphnuc4:~$ ifconfig
+eno1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.86.88  netmask 255.255.255.0  broadcast 192.168.86.255
+        inet6 fe80::add5:86f:ff75:d7d7  prefixlen 64  scopeid 0x20<link>
+        ether c0:3f:d5:60:eb:89  txqueuelen 1000  (Ethernet)
+        RX packets 16588919  bytes 10881798089 (10.8 GB)
+        RX errors 0  dropped 5507  overruns 0  frame 0
+        TX packets 3404319  bytes 582474383 (582.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 20  memory 0xf7d00000-f7d20000  
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 66259167  bytes 9534641998 (9.5 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 66259167  bytes 9534641998 (9.5 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp2s0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether ac:7b:a1:47:dc:e0  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.86.1    0.0.0.0         UG    100    0        0 eno1
+169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 eno1
+192.168.86.0    0.0.0.0         255.255.255.0   U     100    0        0 eno1
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ 
+
+ashburndave@dphnuc4:~$ date
+Sat 07 May 2022 10:28:14 AM EDT
+ashburndave@dphnuc4:~$ 
+ashburndave@dphnuc4:~$ ifconfig
+eno1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.86.88  netmask 255.255.255.0  broadcast 192.168.86.255
+        inet6 fe80::add5:86f:ff75:d7d7  prefixlen 64  scopeid 0x20<link>
+        ether c0:3f:d5:60:eb:89  txqueuelen 1000  (Ethernet)
+        RX packets 16592973  bytes 10882885219 (10.8 GB)
+        RX errors 0  dropped 5507  overruns 0  frame 0
+        TX packets 3406933  bytes 583010139 (583.0 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 20  memory 0xf7d00000-f7d20000  
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 66259376  bytes 9534664448 (9.5 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 66259376  bytes 9534664448 (9.5 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vpn0: flags=4305<UP,POINTOPOINT,RUNNING,NOARP,MULTICAST>  mtu 1434
+        inet 192.168.99.235  netmask 255.255.255.0  destination 192.168.99.235
+        inet6 fe80::6271:99e:a8bc:9588  prefixlen 64  scopeid 0x20<link>
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 500  (UNSPEC)
+        RX packets 17  bytes 1697 (1.6 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 22  bytes 1792 (1.7 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp2s0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether ac:7b:a1:47:dc:e0  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ashburndave@dphnuc4:~$ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.86.1    0.0.0.0         UG    100    0        0 eno1
+54.163.65.103   192.168.86.1    255.255.255.255 UGH   100    0        0 eno1
+169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 eno1
+172.16.0.0      0.0.0.0         255.255.0.0     U     50     0        0 vpn0
+192.168.86.0    0.0.0.0         255.255.255.0   U     100    0        0 eno1
+192.168.86.1    0.0.0.0         255.255.255.255 UH    100    0        0 eno1
+192.168.99.0    0.0.0.0         255.255.255.0   U     50     0        0 vpn0
+ashburndave@dphnuc4:~$ 
+
+
+
