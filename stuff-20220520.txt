@@ -1,0 +1,647 @@
+Fri 20 May 2022 07:13:05 AM EDT
+
+ashburndave@dphnuc4:~$ date
+Fri 20 May 2022 07:12:40 AM EDT
+ashburndave@dphnuc4:~$ date > stuff-20220520.txt
+ashburndave@dphnuc4:~$ code   stuff-20220520.txt
+ashburndave@dphnuc4:~$ 
+
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ date
+Fri 20 May 2022 07:21:50 AM EDT
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ pwd -P
+/home/ashburndave/rails-apps/wirerr7023
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+
+https://stackoverflow.com/questions/7861971/generate-model-in-rails-using-user-idinteger-vs-userreferences
+
+rails generate model Micropost user:references
+
+
+bin/rails generate model Document title:string{4000} summary:string{4000} doc_num:string{100} image_caption:string{1000} type:string{20} has_attachments:boolean worldwide:boolean
+
+bin/rails generate model User first_name:string last_name:string email:string organization:string dn:string{500}
+
+bin/rails generate model Binary data:binary searchable:boolean document:references
+
+bin/rails generate model Comment body:text classification:string{255} classification_xml:string{4000} document:references user:references
+
+bin/rails generate model NonStateActor name:string{4000}
+
+bin/rails generate model DocumentNonStateActor document:references nonstateactor:references
+
+bin/rails db:migrate
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ bin/rails generate model Binary data:binary searchable:boolean document:references
+      invoke  active_record
+      create    db/migrate/20220520112358_create_binaries.rb
+      create    app/models/binary.rb
+      invoke    test_unit
+      create      test/models/binary_test.rb
+      create      test/fixtures/binaries.yml
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ cat db/migrate/20220520112358_create_binaries.rb
+class CreateBinaries < ActiveRecord::Migration[7.0]
+  def change
+    create_table :binaries do |t|
+      t.binary :data
+      t.boolean :searchable
+      t.references :document, null: false, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ cat app/models/binary.rb
+class Binary < ApplicationRecord
+  belongs_to :document
+end
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ bin/rails generate model User first_name:string last_name:string email:string organization:string dn:string{500}
+      invoke  active_record
+      create    db/migrate/20220520112754_create_users.rb
+      create    app/models/user.rb
+      invoke    test_unit
+      create      test/models/user_test.rb
+      create      test/fixtures/users.yml
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ cat db/migrate/20220520112754_create_users.rb
+class CreateUsers < ActiveRecord::Migration[7.0]
+  def change
+    create_table :users do |t|
+      t.string :first_name
+      t.string :last_name
+      t.string :email
+      t.string :organization
+      t.string :dn, limit: 500
+
+      t.timestamps
+    end
+  end
+end
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ cat app/models/user.rb
+class User < ApplicationRecord
+end
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ bin/rails generate model Document title:string{4000} summary:string{4000} doc_num:string{100} image_caption:string{1000} type:string{20} has_attachments:boolean worldwide:boolean
+      invoke  active_record
+      create    db/migrate/20220520113709_create_documents.rb
+      create    app/models/document.rb
+      invoke    test_unit
+      create      test/models/document_test.rb
+      create      test/fixtures/documents.yml
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ catdb/migrate/20220520113709_create_documents.rb
+bash: catdb/migrate/20220520113709_create_documents.rb: No such file or directory
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ cat db/migrate/20220520113709_create_documents.rb
+class CreateDocuments < ActiveRecord::Migration[7.0]
+  def change
+    create_table :documents do |t|
+      t.string :title, limit: 4000
+      t.string :summary, limit: 4000
+      t.string :doc_num, limit: 100
+      t.string :image_caption, limit: 1000
+      t.string :type, limit: 20
+      t.boolean :has_attachments
+      t.boolean :worldwide
+
+      t.timestamps
+    end
+  end
+end
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ cat app/models/document.rb
+class Document < ApplicationRecord
+end
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ bin/rails generate model Comments body:text classification:string{255} classification_xml:string{4000} document:references user:references
+[WARNING] The model name 'Comments' was recognized as a plural, using the singular 'Comment' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record
+      create    db/migrate/20220520114212_create_comments.rb
+      create    app/models/comment.rb
+      invoke    test_unit
+      create      test/models/comment_test.rb
+      create      test/fixtures/comments.yml
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ cat db/migrate/20220520114212_create_comments.rb
+class CreateComments < ActiveRecord::Migration[7.0]
+  def change
+    create_table :comments do |t|
+      t.text :body
+      t.string :classification, limit: 255
+      t.string :classification_xml, limit: 4000
+      t.references :document, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ cat app/models/comment.rb
+class Comment < ApplicationRecord
+  belongs_to :document
+  belongs_to :user
+end
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ bin/rails generate model NonStateActor name:string{4000}
+      invoke  active_record
+      create    db/migrate/20220520114402_create_non_state_actors.rb
+      create    app/models/non_state_actor.rb
+      invoke    test_unit
+      create      test/models/non_state_actor_test.rb
+      create      test/fixtures/non_state_actors.yml
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ cat db/migrate/20220520114402_create_non_state_actors.rb
+class CreateNonStateActors < ActiveRecord::Migration[7.0]
+  def change
+    create_table :non_state_actors do |t|
+      t.string :name, limit: 4000
+
+      t.timestamps
+    end
+  end
+end
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ cat app/models/non_state_actor.rb
+class NonStateActor < ApplicationRecord
+end
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ bin/rails db:migrate
+== 20220520112358 CreateBinaries: migrating ===================================
+-- create_table(:binaries)
+rails aborted!
+StandardError: An error has occurred, all later migrations canceled:
+
+Mysql2::Error: Failed to open the referenced table 'documents'
+/home/ashburndave/rails-apps/wirerr7023/db/migrate/20220520112358_create_binaries.rb:3:in `change'
+
+Caused by:
+ActiveRecord::StatementInvalid: Mysql2::Error: Failed to open the referenced table 'documents'
+/home/ashburndave/rails-apps/wirerr7023/db/migrate/20220520112358_create_binaries.rb:3:in `change'
+
+Caused by:
+Mysql2::Error: Failed to open the referenced table 'documents'
+/home/ashburndave/rails-apps/wirerr7023/db/migrate/20220520112358_create_binaries.rb:3:in `change'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+
+ashburndave@dphnuc4:~/rails-apps/wirerr7023/db/migrate$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023/db/migrate$ pwd -P
+/home/ashburndave/rails-apps/wirerr7023/db/migrate
+ashburndave@dphnuc4:~/rails-apps/wirerr7023/db/migrate$ ls -latr
+total 28
+drwxrwxr-x 3 ashburndave ashburndave 4096 May 20 07:23 ..
+-rw-rw-r-- 1 ashburndave ashburndave  247 May 20 07:23 20220520112358_create_binaries.rb
+-rw-rw-r-- 1 ashburndave ashburndave  266 May 20 07:27 20220520112754_create_users.rb
+-rw-rw-r-- 1 ashburndave ashburndave  382 May 20 07:37 20220520113709_create_documents.rb
+-rw-rw-r-- 1 ashburndave ashburndave  365 May 20 07:42 20220520114212_create_comments.rb
+-rw-rw-r-- 1 ashburndave ashburndave  185 May 20 07:44 20220520114402_create_non_state_actors.rb
+drwxrwxr-x 2 ashburndave ashburndave 4096 May 20 07:44 .
+ashburndave@dphnuc4:~/rails-apps/wirerr7023/db/migrate$ rm 20220520112358_create_binaries.rb
+ashburndave@dphnuc4:~/rails-apps/wirerr7023/db/migrate$ cd ../..
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ bin/rails generate model Binary data:binary searchable:boolean document:references
+      invoke  active_record
+The name 'Binary' is either already used in your application or reserved by Ruby on Rails. Please choose an alternative or use --skip-collision-check or --force to skip this check and run this generator again.
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ bin/rails generate model Binary data:binary searchable:boolean document:references --force
+      invoke  active_record
+      create    db/migrate/20220520114913_create_binaries.rb
+   identical    app/models/binary.rb
+      invoke    test_unit
+   identical      test/models/binary_test.rb
+   identical      test/fixtures/binaries.yml
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ ls -latr db/migrate/
+total 28
+drwxrwxr-x 3 ashburndave ashburndave 4096 May 20 07:23 ..
+-rw-rw-r-- 1 ashburndave ashburndave  266 May 20 07:27 20220520112754_create_users.rb
+-rw-rw-r-- 1 ashburndave ashburndave  382 May 20 07:37 20220520113709_create_documents.rb
+-rw-rw-r-- 1 ashburndave ashburndave  365 May 20 07:42 20220520114212_create_comments.rb
+-rw-rw-r-- 1 ashburndave ashburndave  185 May 20 07:44 20220520114402_create_non_state_actors.rb
+-rw-rw-r-- 1 ashburndave ashburndave  247 May 20 07:49 20220520114913_create_binaries.rb
+drwxrwxr-x 2 ashburndave ashburndave 4096 May 20 07:49 .
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ bin/rails db:migrate
+== 20220520112754 CreateUsers: migrating ======================================
+-- create_table(:users)
+   -> 0.1596s
+== 20220520112754 CreateUsers: migrated (0.1598s) =============================
+
+== 20220520113709 CreateDocuments: migrating ==================================
+-- create_table(:documents)
+   -> 0.1402s
+== 20220520113709 CreateDocuments: migrated (0.1404s) =========================
+
+== 20220520114212 CreateComments: migrating ===================================
+-- create_table(:comments)
+   -> 0.1915s
+== 20220520114212 CreateComments: migrated (0.1916s) ==========================
+
+== 20220520114402 CreateNonStateActors: migrating =============================
+-- create_table(:non_state_actors)
+   -> 0.2233s
+== 20220520114402 CreateNonStateActors: migrated (0.2235s) ====================
+
+== 20220520114913 CreateBinaries: migrating ===================================
+-- create_table(:binaries)
+   -> 0.3799s
+== 20220520114913 CreateBinaries: migrated (0.3800s) ==========================
+
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+ashburndave@dphnuc4:~/rails-apps/wirerr7023$ 
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ashburndave@dphnuc4:~$ mysql -u root -p
+Enter password: 
+ERROR 1698 (28000): Access denied for user 'root'@'localhost'
+ashburndave@dphnuc4:~$ sudo mysql -u root -p
+[sudo] password for ashburndave: 
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 25
+Server version: 8.0.29-0ubuntu0.20.04.3 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+mysql> show databases;
++------------------------+
+| Database               |
++------------------------+
+| firewire_development   |
+| firewire_test          |
+| information_schema     |
+| mysql                  |
+| performance_schema     |
+| sys                    |
+| wiregg254dev           |
+| wiregg254prod          |
+| wiregg254test          |
+| wirerr7023_development |
+| wirerr7023_production  |
+| wirerr7023_test        |
++------------------------+
+12 rows in set (0.00 sec)
+
+mysql> use wirerr7023_development;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++----------------------------------+
+| Tables_in_wirerr7023_development |
++----------------------------------+
+| ar_internal_metadata             |
+| binaries                         |
+| comments                         |
+| documents                        |
+| non_state_actors                 |
+| schema_migrations                |
+| users                            |
++----------------------------------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> desc documents;
++-----------------+---------------+------+-----+---------+----------------+
+| Field           | Type          | Null | Key | Default | Extra          |
++-----------------+---------------+------+-----+---------+----------------+
+| id              | bigint        | NO   | PRI | NULL    | auto_increment |
+| title           | varchar(4000) | YES  |     | NULL    |                |
+| summary         | varchar(4000) | YES  |     | NULL    |                |
+| doc_num         | varchar(100)  | YES  |     | NULL    |                |
+| image_caption   | varchar(1000) | YES  |     | NULL    |                |
+| type            | varchar(20)   | YES  |     | NULL    |                |
+| has_attachments | tinyint(1)    | YES  |     | NULL    |                |
+| worldwide       | tinyint(1)    | YES  |     | NULL    |                |
+| created_at      | datetime(6)   | NO   |     | NULL    |                |
+| updated_at      | datetime(6)   | NO   |     | NULL    |                |
++-----------------+---------------+------+-----+---------+----------------+
+10 rows in set (0.01 sec)
+
+mysql> desc users;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | bigint       | NO   | PRI | NULL    | auto_increment |
+| first_name   | varchar(255) | YES  |     | NULL    |                |
+| last_name    | varchar(255) | YES  |     | NULL    |                |
+| email        | varchar(255) | YES  |     | NULL    |                |
+| organization | varchar(255) | YES  |     | NULL    |                |
+| dn           | varchar(500) | YES  |     | NULL    |                |
+| created_at   | datetime(6)  | NO   |     | NULL    |                |
+| updated_at   | datetime(6)  | NO   |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+8 rows in set (0.01 sec)
+
+mysql> desc comments;
++--------------------+---------------+------+-----+---------+----------------+
+| Field              | Type          | Null | Key | Default | Extra          |
++--------------------+---------------+------+-----+---------+----------------+
+| id                 | bigint        | NO   | PRI | NULL    | auto_increment |
+| body               | text          | YES  |     | NULL    |                |
+| classification     | varchar(255)  | YES  |     | NULL    |                |
+| classification_xml | varchar(4000) | YES  |     | NULL    |                |
+| document_id        | bigint        | NO   | MUL | NULL    |                |
+| user_id            | bigint        | NO   | MUL | NULL    |                |
+| created_at         | datetime(6)   | NO   |     | NULL    |                |
+| updated_at         | datetime(6)   | NO   |     | NULL    |                |
++--------------------+---------------+------+-----+---------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> desc binaries;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | bigint      | NO   | PRI | NULL    | auto_increment |
+| data        | blob        | YES  |     | NULL    |                |
+| searchable  | tinyint(1)  | YES  |     | NULL    |                |
+| document_id | bigint      | NO   | MUL | NULL    |                |
+| created_at  | datetime(6) | NO   |     | NULL    |                |
+| updated_at  | datetime(6) | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+6 rows in set (0.01 sec)
+
+mysql> desc non_state_actors;
++------------+---------------+------+-----+---------+----------------+
+| Field      | Type          | Null | Key | Default | Extra          |
++------------+---------------+------+-----+---------+----------------+
+| id         | bigint        | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(4000) | YES  |     | NULL    |                |
+| created_at | datetime(6)   | NO   |     | NULL    |                |
+| updated_at | datetime(6)   | NO   |     | NULL    |                |
++------------+---------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> desc schema_migrations;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| version | varchar(255) | NO   | PRI | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select * from schema_migrations;
++----------------+
+| version        |
++----------------+
+| 20220520112754 |
+| 20220520113709 |
+| 20220520114212 |
+| 20220520114402 |
+| 20220520114913 |
++----------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ashburndave@dphnuc4:~$ mysqldump -u root -p wirerr7023_development
+Enter password: 
+mysqldump: Got error: 1698: Access denied for user 'root'@'localhost' when trying to connect
+ashburndave@dphnuc4:~$ sudo mysqldump -u root -p wirerr7023_development
+[sudo] password for ashburndave: 
+Enter password: 
+-- MySQL dump 10.13  Distrib 8.0.29, for Linux (x86_64)
+--
+-- Host: localhost    Database: wirerr7023_development
+-- ------------------------------------------------------
+-- Server version	8.0.29-0ubuntu0.20.04.3
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ar_internal_metadata`
+--
+
+DROP TABLE IF EXISTS `ar_internal_metadata`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ar_internal_metadata` (
+  `key` varchar(255) NOT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ar_internal_metadata`
+--
+
+LOCK TABLES `ar_internal_metadata` WRITE;
+/*!40000 ALTER TABLE `ar_internal_metadata` DISABLE KEYS */;
+INSERT INTO `ar_internal_metadata` VALUES ('environment','development','2022-05-20 11:50:31.781040','2022-05-20 11:50:31.781040');
+/*!40000 ALTER TABLE `ar_internal_metadata` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `binaries`
+--
+
+DROP TABLE IF EXISTS `binaries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `binaries` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `data` blob,
+  `searchable` tinyint(1) DEFAULT NULL,
+  `document_id` bigint NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_binaries_on_document_id` (`document_id`),
+  CONSTRAINT `fk_rails_e6d938646d` FOREIGN KEY (`document_id`) REFERENCES `documents` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `binaries`
+--
+
+LOCK TABLES `binaries` WRITE;
+/*!40000 ALTER TABLE `binaries` DISABLE KEYS */;
+/*!40000 ALTER TABLE `binaries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comments`
+--
+
+DROP TABLE IF EXISTS `comments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `comments` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `body` text,
+  `classification` varchar(255) DEFAULT NULL,
+  `classification_xml` varchar(4000) DEFAULT NULL,
+  `document_id` bigint NOT NULL,
+  `user_id` bigint NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_comments_on_document_id` (`document_id`),
+  KEY `index_comments_on_user_id` (`user_id`),
+  CONSTRAINT `fk_rails_03de2dc08c` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `fk_rails_bf7f33d4a8` FOREIGN KEY (`document_id`) REFERENCES `documents` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comments`
+--
+
+LOCK TABLES `comments` WRITE;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `documents`
+--
+
+DROP TABLE IF EXISTS `documents`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `documents` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(4000) DEFAULT NULL,
+  `summary` varchar(4000) DEFAULT NULL,
+  `doc_num` varchar(100) DEFAULT NULL,
+  `image_caption` varchar(1000) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `has_attachments` tinyint(1) DEFAULT NULL,
+  `worldwide` tinyint(1) DEFAULT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `documents`
+--
+
+LOCK TABLES `documents` WRITE;
+/*!40000 ALTER TABLE `documents` DISABLE KEYS */;
+/*!40000 ALTER TABLE `documents` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `non_state_actors`
+--
+
+DROP TABLE IF EXISTS `non_state_actors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `non_state_actors` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(4000) DEFAULT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `non_state_actors`
+--
+
+LOCK TABLES `non_state_actors` WRITE;
+/*!40000 ALTER TABLE `non_state_actors` DISABLE KEYS */;
+/*!40000 ALTER TABLE `non_state_actors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_migrations`
+--
+
+DROP TABLE IF EXISTS `schema_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `schema_migrations` (
+  `version` varchar(255) NOT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_migrations`
+--
+
+LOCK TABLES `schema_migrations` WRITE;
+/*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
+INSERT INTO `schema_migrations` VALUES ('20220520112754'),('20220520113709'),('20220520114212'),('20220520114402'),('20220520114913');
+/*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `organization` varchar(255) DEFAULT NULL,
+  `dn` varchar(500) DEFAULT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-05-20  8:24:39
+ashburndave@dphnuc4:~$ 
+
